@@ -1,0 +1,248 @@
+# ===================== int =====================
+"int" : [
+    "bit_length" => "bit_length() -> int",
+    "to_bytes" => "to_bytes(length, byteorder, *, signed=False) -> bytes",
+    "from_bytes" => "from_bytes(bytes, byteorder, *, signed=False) -> int"
+]
+
+# ===================== float =====================
+"float" : [
+    "as_integer_ratio" => "as_integer_ratio() -> tuple[int, int]",
+    "hex" => "hex() -> str",
+    "fromhex" => "fromhex(string) -> float",
+    "is_integer" => "is_integer() -> bool"
+]
+
+# ===================== complex =====================
+"complex" : [
+    "conjugate" => "conjugate() -> complex"
+]
+
+# ===================== str =====================
+"str" : [
+    "capitalize" => "capitalize() -> str",
+    "casefold" => "casefold() -> str",
+    "center" => "center(width, fillchar=' ') -> str",
+    "count" => "count(sub, start=0, end=-1) -> int",
+    "encode" => "encode(encoding='utf-8', errors='strict') -> bytes",
+    "endswith" => "endswith(suffix, start=0, end=-1) -> bool",
+    "expandtabs" => "expandtabs(tabsize=8) -> str",
+    "find" => "find(sub, start=0, end=-1) -> int",
+    "format" => "format(*args, **kwargs) -> str",
+    "format_map" => "format_map(mapping) -> str",
+    "index" => "index(sub, start=0, end=-1) -> int",
+    "isalnum" => "isalnum() -> bool",
+    "isalpha" => "isalpha() -> bool",
+    "isascii" => "isascii() -> bool",
+    "isdecimal" => "isdecimal() -> bool",
+    "isdigit" => "isdigit() -> bool",
+    "isidentifier" => "isidentifier() -> bool",
+    "islower" => "islower() -> bool",
+    "isnumeric" => "isnumeric() -> bool",
+    "isprintable" => "isprintable() -> bool",
+    "isspace" => "isspace() -> bool",
+    "istitle" => "istitle() -> bool",
+    "isupper" => "isupper() -> bool",
+    "join" => "join(iterable) -> str",
+    "ljust" => "ljust(width, fillchar=' ') -> str",
+    "lower" => "lower() -> str",
+    "lstrip" => "lstrip(chars=None) -> str",
+    "maketrans" => "maketrans(x, y=None, z=None) -> dict",
+    "partition" => "partition(sep) -> tuple[str,str,str]",
+    "replace" => "replace(old, new, count=-1) -> str",
+    "rfind" => "rfind(sub, start=0, end=-1) -> int",
+    "rindex" => "rindex(sub, start=0, end=-1) -> int",
+    "rjust" => "rjust(width, fillchar=' ') -> str",
+    "rpartition" => "rpartition(sep) -> tuple[str,str,str]",
+    "rsplit" => "rsplit(sep=None, maxsplit=-1) -> list[str]",
+    "rstrip" => "rstrip(chars=None) -> str",
+    "split" => "split(sep=None, maxsplit=-1) -> list[str]",
+    "splitlines" => "splitlines(keepends=False) -> list[str]",
+    "startswith" => "startswith(prefix, start=0, end=-1) -> bool",
+    "strip" => "strip(chars=None) -> str",
+    "swapcase" => "swapcase() -> str",
+    "title" => "title() -> str",
+    "translate" => "translate(table) -> str",
+    "upper" => "upper() -> str",
+    "zfill" => "zfill(width) -> str"
+]
+
+# ===================== bytes =====================
+"bytes" : [
+    "capitalize" => "capitalize() -> bytes",
+    "center" => "center(width, fill=b' ') -> bytes",
+    "count" => "count(sub, start=0, end=-1) -> int",
+    "decode" => "decode(encoding='utf-8', errors='strict') -> str",
+    "endswith" => "endswith(suffix, start=0, end=-1) -> bool",
+    "expandtabs" => "expandtabs(tabsize=8) -> bytes",
+    "find" => "find(sub, start=0, end=-1) -> int",
+    "hex" => "hex() -> str",
+    "index" => "index(sub, start=0, end=-1) -> int",
+    "isalnum" => "isalnum() -> bool",
+    "isalpha" => "isalpha() -> bool",
+    "isdigit" => "isdigit() -> bool",
+    "islower" => "islower() -> bool",
+    "isspace" => "isspace() -> bool",
+    "istitle" => "istitle() -> bool",
+    "isupper" => "isupper() -> bool",
+    "join" => "join(iterable) -> bytes",
+    "ljust" => "ljust(width, fill=b' ') -> bytes",
+    "lower" => "lower() -> bytes",
+    "lstrip" => "lstrip(chars=None) -> bytes",
+    "maketrans" => "maketrans(froms, tos) -> bytes",
+    "partition" => "partition(sep) -> tuple[bytes,bytes,bytes]",
+    "replace" => "replace(old, new, count=-1) -> bytes",
+    "rfind" => "rfind(sub, start=0, end=-1) -> int",
+    "rindex" => "rindex(sub, start=0, end=-1) -> int",
+    "rjust" => "rjust(width, fill=b' ') -> bytes",
+    "rpartition" => "rpartition(sep) -> tuple[bytes,bytes,bytes]",
+    "rsplit" => "rsplit(sep=None, maxsplit=-1) -> list[bytes]",
+    "rstrip" => "rstrip(chars=None) -> bytes",
+    "split" => "split(sep=None, maxsplit=-1) -> list[bytes]",
+    "splitlines" => "splitlines(keepends=False) -> list[bytes]",
+    "startswith" => "startswith(prefix, start=0, end=-1) -> bool",
+    "strip" => "strip(chars=None) -> bytes",
+    "swapcase" => "swapcase() -> bytes",
+    "title" => "title() -> bytes",
+    "translate" => "translate(table, delete=b'') -> bytes",
+    "upper" => "upper() -> bytes",
+    "zfill" => "zfill(width) -> bytes",
+    "fromhex" => "fromhex(string) -> bytes"
+]
+
+# ===================== bytearray =====================
+"bytearray" : [
+    "append" => "append(item) -> None",
+    "capitalize" => "capitalize() -> bytearray",
+    "center" => "center(width, fill=b' ') -> bytearray",
+    "clear" => "clear() -> None",
+    "copy" => "copy() -> bytearray",
+    "count" => "count(sub, start=0, end=-1) -> int",
+    "decode" => "decode(encoding='utf-8', errors='strict') -> str",
+    "endswith" => "endswith(suffix, start=0, end=-1) -> bool",
+    "expandtabs" => "expandtabs(tabsize=8) -> bytearray",
+    "extend" => "extend(iterable) -> None",
+    "find" => "find(sub, start=0, end=-1) -> int",
+    "hex" => "hex() -> str",
+    "index" => "index(sub, start=0, end=-1) -> int",
+    "insert" => "insert(index, item) -> None",
+    "isalnum" => "isalnum() -> bool",
+    "isalpha" => "isalpha() -> bool",
+    "isdigit" => "isdigit() -> bool",
+    "islower" => "islower() -> bool",
+    "isspace" => "isspace() -> bool",
+    "istitle" => "istitle() -> bool",
+    "isupper" => "isupper() -> bool",
+    "join" => "join(iterable) -> bytearray",
+    "ljust" => "ljust(width, fill=b' ') -> bytearray",
+    "lower" => "lower() -> bytearray",
+    "lstrip" => "lstrip(chars=None) -> bytearray",
+    "pop" => "pop(index=-1) -> int",
+    "remove" => "remove(value) -> None",
+    "replace" => "replace(old, new, count=-1) -> bytearray",
+    "reverse" => "reverse() -> None",
+    "rfind" => "rfind(sub, start=0, end=-1) -> int",
+    "rindex" => "rindex(sub, start=0, end=-1) -> int",
+    "rjust" => "rjust(width, fill=b' ') -> bytearray",
+    "rpartition" => "rpartition(sep) -> tuple[bytearray,bytearray,bytearray]",
+    "rsplit" => "rsplit(sep=None, maxsplit=-1) -> list[bytearray]",
+    "rstrip" => "rstrip(chars=None) -> bytearray",
+    "split" => "split(sep=None, maxsplit=-1) -> list[bytearray]",
+    "splitlines" => "splitlines(keepends=False) -> list[bytearray]",
+    "startswith" => "startswith(prefix, start=0, end=-1) -> bool",
+    "strip" => "strip(chars=None) -> bytearray",
+    "swapcase" => "swapcase() -> bytearray",
+    "title" => "title() -> bytearray",
+    "translate" => "translate(table, delete=b'') -> bytearray",
+    "upper" => "upper() -> bytearray",
+    "zfill" => "zfill(width) -> bytearray"
+]
+
+# ===================== list =====================
+"list" : [
+    "append" => "append(object) -> None",
+    "clear" => "clear() -> None",
+    "copy" => "copy() -> list",
+    "count" => "count(value) -> int",
+    "extend" => "extend(iterable) -> None",
+    "index" => "index(value, start=0, end=-1) -> int",
+    "insert" => "insert(index, object) -> None",
+    "pop" => "pop(index=-1)",
+    "remove" => "remove(value) -> None",
+    "reverse" => "reverse() -> None",
+    "sort" => "sort(*, key=None, reverse=False) -> None"
+]
+
+# ===================== tuple =====================
+"tuple" : [
+    "count" => "count(value) -> int",
+    "index" => "index(value, start=0, end=-1) -> int"
+]
+
+# ===================== dict =====================
+"dict" : [
+    "clear" => "clear() -> None",
+    "copy" => "copy() -> dict",
+    "fromkeys" => "fromkeys(iterable, value=None) -> dict",
+    "get" => "get(key, default=None)",
+    "items" => "items() -> dict_items",
+    "keys" => "keys() -> dict_keys",
+    "pop" => "pop(key, default=...)",
+    "popitem" => "popitem() -> tuple",
+    "setdefault" => "setdefault(key, default=None)",
+    "update" => "update([E, ]**F) -> None",
+    "values" => "values() -> dict_values"
+]
+
+# ===================== set =====================
+"set" : [
+    "add" => "add(element) -> None",
+    "clear" => "clear() -> None",
+    "copy" => "copy() -> set",
+    "difference" => "difference(*others) -> set",
+    "difference_update" => "difference_update(*others) -> None",
+    "discard" => "discard(element) -> None",
+    "intersection" => "intersection(*others) -> set",
+    "intersection_update" => "intersection_update(*others) -> None",
+    "isdisjoint" => "isdisjoint(other) -> bool",
+    "issubset" => "issubset(other) -> bool",
+    "issuperset" => "issuperset(other) -> bool",
+    "pop" => "pop()",
+    "remove" => "remove(element) -> None",
+    "symmetric_difference" => "symmetric_difference(other) -> set",
+    "symmetric_difference_update" => "symmetric_difference_update(other) -> None",
+    "union" => "union(*others) -> set",
+    "update" => "update(*others) -> None"
+]
+
+# ===================== frozenset =====================
+"frozenset" : [
+    "copy" => "copy() -> frozenset",
+    "difference" => "difference(*others) -> frozenset",
+    "intersection" => "intersection(*others) -> frozenset",
+    "isdisjoint" => "isdisjoint(other) -> bool",
+    "issubset" => "issubset(other) -> bool",
+    "issuperset" => "issuperset(other) -> bool",
+    "symmetric_difference" => "symmetric_difference(other) -> frozenset",
+    "union" => "union(*others) -> frozenset"
+]
+
+# ===================== range =====================
+"range" : [
+    "count" => "count(value) -> int",
+    "index" => "index(value, start=0, end=-1) -> int"
+]
+
+# ===================== memoryview =====================
+"memoryview" : [
+    "cast" => "cast(format, shape=...) -> memoryview",
+    "hex" => "hex() -> str",
+    "tolist" => "tolist() -> list"
+]
+
+# ===================== slice =====================
+"slice" : [
+    "indices" => "indices(length) -> tuple[int,int,int]"
+]
+
+

@@ -1,0 +1,67 @@
+# 函数签名配置示例: name=signature
+abs=abs(x) -> number
+all=all(iterable) -> bool
+any=any(iterable) -> bool
+ascii=ascii(obj) -> str
+bin=bin(x) -> str
+bool=bool(x=False) -> bool
+bytearray=bytearray(source=b'') -> bytearray
+bytes=bytes(source=b'') -> bytes
+callable=callable(obj) -> bool
+chr=chr(i) -> str
+classmethod=classmethod(func) -> classmethod
+compile=compile(source, filename, mode, flags=0, dont_inherit=0, optimize=-1) -> code
+complex=complex(real=0, imag=0) -> complex
+delattr=delattr(obj, name)
+dict=dict(**kwargs) -> dict
+dir=dir(obj=None) -> list
+divmod=divmod(a, b) -> tuple
+enumerate=enumerate(iterable, start=0) -> enumerate
+eval=eval(expression, globals=None, locals=None)
+exec=exec(object, globals=None, locals=None)
+float=float(x=0.0) -> float
+format=format(value, format_spec='') -> str
+frozenset=frozenset(iterable=()) -> frozenset
+getattr=getattr(obj, name, default=...)
+globals=globals() -> dict
+hasattr=hasattr(obj, name) -> bool
+hash=hash(obj) -> int
+help=help(obj=None)
+hex=hex(x) -> str
+id=id(obj) -> int
+input=input(prompt='') -> str
+int=int(x=0, base=10) -> int
+isinstance=isinstance(obj, classinfo) -> bool
+issubclass=issubclass(cls, classinfo) -> bool
+iter=iter(obj, sentinel=...) -> iterator
+len=len(s) -> int
+list=list(iterable=()) -> list
+locals=locals() -> dict
+map=map(func, *iterables) -> map
+max=max(*args, key=None)
+memoryview=memoryview(obj) -> memoryview
+min=min(*args, key=None)
+next=next(iterator, default=...)
+object=object() -> object
+oct=oct(x) -> str
+open=open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None) -> file
+ord=ord(c) -> int
+pow=pow(base, exp, mod=...)
+print=print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+property=property(fget=None, fset=None, fdel=None, doc=None) -> property
+range=range(stop) | range(start, stop[, step])
+repr=repr(obj) -> str
+reversed=reversed(seq) -> reverseiterator
+round=round(number, ndigits=...) -> number
+set=set(iterable=()) -> set
+setattr=setattr(obj, name, value)
+slice=slice(start=..., stop=..., step=...) -> slice
+sorted=sorted(iterable, *, key=None, reverse=False) -> list
+staticmethod=staticmethod(func) -> staticmethod
+str=str(object='') -> str
+sum=sum(iterable, start=0)
+super=super(type=..., obj=...) -> super
+tuple=tuple(iterable=()) -> tuple
+type=type(object) | type(name, bases, dict) -> type
+vars=vars(obj=...) -> dict
+zip=zip(*iterables) -> zip

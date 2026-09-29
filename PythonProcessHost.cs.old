@@ -1,0 +1,181 @@
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Threading;
+
+namespace TinyPyIDE
+{
+    /// <summary>
+    /// Python进程通讯封装类
+    /// 只负责进程通信，界面展示交给外部
+    /// </summary>
+    public class PythonProcessHost : IDisposable
+    {
+        #region 外部回调接口定义
+        /// <summary>
+        /// 外部实现此方法，接收Python所有输出（stdout+stderr）
+        /// </summary>
+        public Action<string> WritePythonResponse { get; set; }
+        #endregion
+
+        #region 私有成员
+        private Process? _pythonProcess;
+        private StreamWriter? _stdin;
+        private bool _disposed = false;
+        // Python可执行文件路径，如 "python" / @"C:\Python37\python.exe"
+        private readonly string _pythonExePath;
+        #endregion
+
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="pythonExePath">python.exe路径，PATH已配置直接填"python"</param>
+        public PythonProcessHost(string pythonExePath = "python")
+        {
+            _pythonExePath = pythonExePath;
+        }
+
+        /// <summary>
+        /// 启动Python交互进程 python -i
+        /// </summary>
+        /// <returns>是否启动成功</returns>
+        public bool Start()
+        {
+            // 进程已存在先销毁
+            if (_pythonProcess != null && !_pythonProcess.HasExited)
+            {
+                KillProcess();
+            }
+
+            var psi = new ProcessStartInfo
+            {
+                FileName = _pythonExePath,
+                Arguments = "-i", // 交互模式
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                StandardOutputEncoding = Encoding.UTF8,
+                StandardErrorEncoding = Encoding.UTF8
+            };
+            // 强制UTF8，中文不乱码
+            psi.EnvironmentVariables["PYTHONUTF8"] = "1";
+
+            _pythonProcess = new Process { StartInfo = psi };
+
+            // 异步接收标准输出
+            _pythonProcess.OutputDataReceived += OnStdOutReceived;
+            _pythonProcess.ErrorDataReceived += OnStdErrReceived;
+
+            bool started = _pythonProcess.Start();
+            if (!started)
+                return false;
+
+            _stdin = _pythonProcess.StandardInput;
+            _stdin.AutoFlush = true;
+
+            // 开启异步监听
+            _pythonProcess.BeginOutputReadLine();
+            _pythonProcess.BeginErrorReadLine();
+
+            return true;
+        }
+
+        /// <summary>
+        /// 【对外核心接口】提交代码给Python执行
+        /// </summary>
+        /// <param name="code">待执行Python代码（支持多行）</param>
+        public void SubmitPythonCode(string code)
+        {
+            if (_pythonProcess == null || _pythonProcess.HasExited || _stdin == null)
+            {
+                NotifyResponse("[系统] Python进程未运行，请先调用Start()\r\n");
+                return;
+            }
+
+            try
+            {
+                // 向stdin写入代码 + 换行触发执行
+                _stdin.WriteLine(code);
+            }
+            catch (Exception ex)
+            {
+                NotifyResponse($"[系统异常] 发送代码失败：{ex.Message}\r\n");
+            }
+        }
+
+        #region 内部数据流接收
+        private void OnStdOutReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.Data))
+                return;
+            NotifyResponse(e.Data + Environment.NewLine);
+        }
+
+        private void OnStdErrReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.Data))
+                return;
+            NotifyResponse($"[stderr] {e.Data}{Environment.NewLine}");
+        }
+
+        /// <summary>
+        /// 统一转发输出到外部回调（自动跨线程安全包装）
+        /// </summary>
+        private void NotifyResponse(string text)
+        {
+            if (WritePythonResponse == null)
+                return;
+
+            try
+            {
+                // 进程事件回调线程不是UI线程，委托给外部自行处理Invoke
+                WritePythonResponse.Invoke(text);
+            }
+            catch
+            {
+                // 外部回调异常直接吞掉，防止进程监听线程崩溃
+            }
+        }
+        #endregion
+
+        #region 进程销毁释放
+        private void KillProcess()
+        {
+            _stdin?.Close();
+            if (_pythonProcess != null)
+            {
+                if (!_pythonProcess.HasExited)
+                {
+                    _pythonProcess.Kill();
+                    _pythonProcess.WaitForExit(1000);
+                }
+                _pythonProcess.Dispose();
+                _pythonProcess = null;
+            }
+            _stdin = null;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+            _disposed = true;
+            KillProcess();
+        }
+        #endregion
+
+        public bool Restart()
+        {
+            KillProcess();
+            return Start();
+        }
+    }
+}
